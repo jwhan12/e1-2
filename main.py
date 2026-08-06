@@ -21,31 +21,31 @@ class Quiz:
             raise ValueError("정답은 1~4 사이의 숫자여야 합니다.")
 
     def display(self, number):
-        """문제와 선택지를 출력한다."""
+        """문제와 선택지를 가독성있게 출력한다."""
 
         print("-" * 40)
-        print(f"[문제 {number}]")
+        print(f"[문제 {number}]") #f-string인거같은데 이 문장 구조 이해가 안감
         print(self.question)
         print()
 
-        for index, choice in enumerate(self.choices, start=1):
+        for index, choice in enumerate(self.choices, start=1): # 번호 붙이기
             print(f"{index}. {choice}")
 
-    def is_correct(self, user_answer):
-        """사용자의 답이 정답인지 확인한다."""
+    def is_correct(self, user_answer): 
+        """사용자의 답이 실제 정답과 같은지 확인한다."""
 
-        return self.answer == user_answer
+        return self.answer == user_answer # 퀴즈에 저장된 실제 대답과 사용자가 입력한 대답 비교 (근데 return : 함수가 계산한 결과를 함수를 호출한 곳으로 돌려준다가 뭔지 모르겠음)
 
-    def to_dict(self):
+    def to_dict(self): # 퀴즈안에 저장된 데이터 딕셔너리로 바꾼다
         """Quiz 객체를 JSON에 저장 가능한 dict로 바꾼다."""
 
         return {
-            "question": self.question,
+            "question": self.question, # "question" : "다음 중 디져트가 아닌것은?"" 
             "choices": self.choices,
             "answer": self.answer,
-        }
+        } 
 
-    @classmethod
+    @classmethod # 패스
     def from_dict(cls, data):
         """dict 데이터를 Quiz 객체로 바꾼다."""
 
@@ -61,18 +61,18 @@ class QuizGame:
 
     def __init__(self):
         # main.py가 있는 폴더 안에서 state.json을 찾는다.
-        self.state_file = Path(__file__).resolve().parent / "state.json"
+        self.state_file = Path(__file__).resolve().parent / "state.json" # 패스
 
-        self.quizzes = []
+        self.quizzes = [] # 빈 퀴즈 목록. 여러개의 퀴즈 보관하는 상자
 
-        self.best_score = 0
-        self.best_correct = 0
-        self.best_total = 0
+        self.best_score = 0 # 최고 점수 저장
+        self.best_correct = 0 # 최고 기록에서 맞힌 문제 수
+        self.best_total = 0 # 최고 기록 당시 전체 문제 수
 
-        self.load_state()
+        self.load_state() # state.json 파일을 읽어 이전 데이터를 불러온다. 저장된 파일이 있으면 그 기록을 덮어쓴다.
 
     def create_default_quizzes(self):
-        """파일이 없거나 손상됐을 때 사용할 기본 퀴즈"""
+        """파일이 없거나 손상됐을 때 사용할 기본 퀴즈""" # state.json 파일이 없거나 손상됐을 때 기본으로 사용할 퀴즈를 만든다.
 
         return [
             Quiz(
