@@ -1,13 +1,13 @@
-# e1-2
-
-파일 생성 후 Github Repo에 연결
+git 저장소 생성
 ```sh
-git remote add origin https://github.com/jwhan12/e1-2.git
-git pull origin main
-git remote -v
-origin  https://github.com/jwhan12/e1-2.git (fetch)
-origin  https://github.com/jwhan12/e1-2.git (push)
+git config --global user.name "Ji won-Han"
+
+git config --global user.email "jwhan190124@gmail.com"
+
+git clone https://github.com/jwhan12/e1-2.githttps://github.com/jwhan12/e1-2.git
 ```
 
-ㅇㄹㅇㄹ
-ㅇㄹㅇㄹ
+.gitignore, README.md 파일 생성
+
+![나의 스크린샷 없음](screenshots/screenshot-00.png)
+
