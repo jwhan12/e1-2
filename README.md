@@ -8,15 +8,15 @@ Python으로 제작한 콘솔 기반 퀴즈 게임입니다.
 
 ## 2. 퀴즈 주제 선정 이유
 
-이 프로젝트의 퀴즈 주제는 **[디저트]**입니다.
+이 프로젝트의 퀴즈 주제는 **디저트**입니다.
 
-평소 관심이 있던 분야이며, 다양한 난이도의 문제를 만들기 쉽다고 생각하여 해당 주제를 선택했습니다. 퀴즈를 제작하면서 Python 문법과 함께 주제에 대한 지식도 확인할 수 있습니다.
+평소 관심이 있던 분야이며, 다양한 난이도의 문제를 만들기 쉽다고 생각하여 해당 주제를 선택했습니다.
 
 ## 3. 실행 방법
 
 ### 실행 환경
 
-* Python 3.10 이상
+* Python 3.9.6
 * 외부 라이브러리 사용 없음
 
 ### 실행 명령어
@@ -27,7 +27,7 @@ Python으로 제작한 콘솔 기반 퀴즈 게임입니다.
 python main.py
 ```
 
-## 4. 기능 목록
+## 4. 기능 목록 (퀴즈 풀기, 추가, 목록 점수)
 
 * 메뉴 선택
 * 퀴즈 풀기
@@ -44,18 +44,14 @@ python main.py
 ## 5. 파일 구조
 
 ```text
-quiz-project/
-├── main.py          # 프로그램 실행 파일
-├── quiz.py          # Quiz 클래스
-├── quiz_game.py     # QuizGame 클래스와 게임 기능
-├── state.json       # 퀴즈 및 최고 점수 저장 파일
-├── README.md        # 프로젝트 설명 문서
-├── .gitignore       # Git 제외 파일 설정
-└── docs/
-    └── screenshots/ # 프로그램 실행 화면 이미지
+e1-2/
+├── main.py             # Quiz, QuizGame 클래스 및 프로그램 실행
+├── state.json          # 퀴즈 및 최고 점수 저장 파일
+├── README.md           # 프로젝트 설명 문서
+├── .gitignore          # Git 제외 파일 설정
+└── screenshots/
+    └── screenshot-00.png   # 프로그램 실행 화면 이미지
 ```
-
-> 실제 프로젝트 구조에 따라 파일명과 구성을 수정할 수 있습니다.
 
 ## 6. 데이터 파일 설명
 
@@ -67,7 +63,9 @@ quiz-project/
 * `question`: 문제 내용
 * `choices`: 4개의 선택지
 * `answer`: 정답 번호
-* `best_score`: 최고 점수 또는 최고 정답 개수
+* `best_score`: 최고 점수 또는 최고 정답 개수 (0~100)
+* `best_correct` : 최고 기록에서 맞힌 문제 수
+* `best_total`   : 최고 기록 당시 전체 문제 수
 
 데이터는 UTF-8 형식으로 저장됩니다.
 
@@ -90,3 +88,10 @@ quiz-project/
 ```
 
 파일이 없는 경우 기본 퀴즈 데이터를 사용합니다. 파일이 손상되거나 읽기 오류가 발생한 경우 안내 메시지를 출력하고 기본 데이터로 복구합니다.
+
+
+## 7. 실행 화면 스크린샷 구성 (예시)
+docs/screenshots/menu.png
+docs/screenshots/play.png
+docs/screenshots/add_quiz.png
+docs/screenshots/score.png
