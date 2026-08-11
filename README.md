@@ -16,7 +16,7 @@ Python으로 제작한 콘솔 기반 퀴즈 게임입니다.
 
 ### 실행 환경
 
-* Python 3.9.6
+* Python 3.13.15
 * 외부 라이브러리 사용 없음
 
 ### 실행 명령어
@@ -27,7 +27,7 @@ Python으로 제작한 콘솔 기반 퀴즈 게임입니다.
 python main.py
 ```
 
-## 4. 기능 목록 (퀴즈 풀기, 추가, 목록 점수)
+## 4. 기능 목록
 
 * 메뉴 선택
 * 퀴즈 풀기
@@ -45,10 +45,10 @@ python main.py
 
 ```text
 e1-2/
-├── main.py             # Quiz, QuizGame 클래스 및 프로그램 실행
-├── state.json          # 퀴즈 및 최고 점수 저장 파일
-├── README.md           # 프로젝트 설명 문서
-├── .gitignore          # Git 제외 파일 설정
+├── main.py                 # Quiz, QuizGame 클래스 및 프로그램 실행
+├── state.json              # 퀴즈 및 최고 점수 저장 파일
+├── README.md               # 프로젝트 설명 문서
+├── .gitignore              # Git 제외 파일 설정
 └── screenshots/
     └── screenshot-00.png   # 프로그램 실행 화면 이미지
 ```
@@ -63,9 +63,9 @@ e1-2/
 * `question`: 문제 내용
 * `choices`: 4개의 선택지
 * `answer`: 정답 번호
-* `best_score`: 최고 점수 또는 최고 정답 개수 (0~100)
-* `best_correct` : 최고 기록에서 맞힌 문제 수
-* `best_total`   : 최고 기록 당시 전체 문제 수
+* `best_score`: 최고 점수 또는 최고 정답 개수
+* `best_correct`: 최고 기록에서 맞힌 문제 수
+* `best_total`: 최고 기록 당시 전체 문제 수
 
 데이터는 UTF-8 형식으로 저장됩니다.
 
@@ -73,7 +73,7 @@ e1-2/
 {
   "quizzes": [
     {
-      "question": "다음 중 빵 종류가 아닌것은?",
+      "question": "다음 중 빵 종류가 아닌 것은?",
       "choices": [
         "소금빵",
         "초코소라빵",
@@ -89,9 +89,11 @@ e1-2/
 
 파일이 없는 경우 기본 퀴즈 데이터를 사용합니다. 파일이 손상되거나 읽기 오류가 발생한 경우 안내 메시지를 출력하고 기본 데이터로 복구합니다.
 
+## 7. 실행 화면 스크린샷 구성
 
-## 7. 실행 화면 스크린샷 구성 (예시)
+```text
 docs/screenshots/menu.png
 docs/screenshots/play.png
 docs/screenshots/add_quiz.png
 docs/screenshots/score.png
+```
