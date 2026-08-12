@@ -105,13 +105,20 @@ e1-2/
 
 파일이 없는 경우 기본 퀴즈 데이터를 사용합니다. 파일이 손상되거나 읽기 오류가 발생한 경우 안내 메시지를 출력하고 기본 데이터로 복구합니다.
 
-## 7. 실행 화면 스크린샷 구성
+<br>
 
+# 7. 실행 화면 스크린샷 구성
+### 퀴즈 메인 메뉴
+![메인 메뉴](screenshots/main_quiz.png)
 
+### 퀴즈 풀기 (1번)
+![퀴즈 풀기](screenshots/quiz_play/screenshot_n1.png)
 
-```text
-docs/screenshots/menu.png
-docs/screenshots/play.png
-docs/screenshots/add_quiz.png
-docs/screenshots/score.png
-```
+### 퀴즈 추가 / 저장 (2번)
+![퀴즈 추가](screenshots/add_quiz/퀴즈추가,저장.png)
+
+### 퀴즈 목록 (3번)
+![퀴즈 목록](screenshots/quiz_list/퀴즈목록.png)
+
+### 최고 점수 확인 (4번)
+![점수 확인](screenshots/check_quiz/최고점수.png)
