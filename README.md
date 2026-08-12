@@ -8,7 +8,7 @@ Python으로 제작한 콘솔 기반 퀴즈 게임입니다.
 
 ## 2. 퀴즈 주제 선정 이유
 
-이 프로젝트의 퀴즈 주제는 **디저트**입니다.
+이 프로젝트의 퀴즈 주제는 **카페 메뉴**입니다.
 평소 관심이 있던 분야이며, 다양한 난이도의 문제를 만들기 쉽다고 생각하여 해당 주제를 선택했습니다.
 
 ## 3. 실행 방법
@@ -23,7 +23,7 @@ Python으로 제작한 콘솔 기반 퀴즈 게임입니다.
 - 안정적이고 충분히 검증된 3.13 vs 오류 메세지 등 다양한 기능의 3.14
 
 ```
-3 (Major) . 13 (Minor) . 7 (Path)
+3 (Major) . 13 (Minor) . 15 (Patch)
 ```
 
 ### Minor
@@ -33,7 +33,7 @@ Python으로 제작한 콘솔 기반 퀴즈 게임입니다.
 2. 기능적 차이
 
 ### Patch
-숫자가 높을수록 많은 patch가 됨 == 안정성 up
+Patch 버전은 같은 Major/Minor 버전에서 주로 버그 수정 및 보안 수정 등이 반영될 때 증가
 
 ### 실행 명령어
 
@@ -61,12 +61,22 @@ python main.py
 
 ```text
 e1-2/
-├── main.py                 # Quiz, QuizGame 클래스 및 프로그램 실행
-├── state.json              # 퀴즈 및 최고 점수 저장 파일
-├── README.md               # 프로젝트 설명 문서
-├── .gitignore              # Git 제외 파일 설정
-└── screenshots/
-    └── screenshot-00.png   # 프로그램 실행 화면 이미지
+├── screenshots/
+│   ├── add_quiz/
+│   │   └── 퀴즈추가,저장.png       # 퀴즈 추가 및 저장 화면
+│   ├── check_quiz/
+│   │   └── 최고점수.png            # 최고 점수 확인 화면
+│   ├── quiz_list/
+│   │   └── 퀴즈목록.png            # 등록된 퀴즈 목록 화면
+│   ├── quiz_play/
+│   │   └── screenshot_n1.png       # 퀴즈 풀이 화면
+│   ├── exit_quiz.png               # 프로그램 종료 화면
+│   ├── main_quiz.png               # 메인 메뉴 화면
+│   └── screenshot_file.png         # 파일 저장 확인 화면
+├── .gitignore                      # Git 추적 제외 파일 설정
+├── main.py                         # Quiz, QuizGame 클래스 및 프로그램 실행
+├── README.md                       # 프로젝트 설명 문서
+└── state.json                      # 퀴즈 및 최고 점수 저장 파일
 ```
 
 ## 6. 데이터 파일 설명
@@ -79,7 +89,7 @@ e1-2/
 * `question`: 문제 내용
 * `choices`: 4개의 선택지
 * `answer`: 정답 번호
-* `best_score`: 최고 점수 또는 최고 정답 개수
+* `best_score`: 0 ~ 100점까지의 최고 점수 또는 최고 정답 개수
 * `best_correct`: 최고 기록에서 맞힌 문제 수
 * `best_total`: 최고 기록 당시 전체 문제 수
 
