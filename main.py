@@ -1,51 +1,51 @@
-import json
-from pathlib import Path
+import json # package
+from pathlib import Path # pathlib package & Path class or sub package
 
 
 class Quiz:
     """퀴즈 한 문제를 담당하는 클래스"""
 
-    def __init__(self, question, choices, answer):
-        self.question = question
+    def __init__(self, question, choices, answer): # Quiz class에서 가장 먼저 실행 / question, choices, answer 데이터
+        self.question = question # question 데이터를 self.question에 할당
         self.choices = choices
         self.answer = answer
 
         # 잘못된 퀴즈가 만들어지는 것을 방지한다.
-        if not self.question:
+        if not self.question: # self.question이 비어있을 경우 실행
             raise ValueError("문제는 비어 있을 수 없습니다.")
 
-        if len(self.choices) != 4:
+        if len(self.choices) != 4: # self.choices 개수가 4와 같지 않을때 실행
             raise ValueError("선택지는 반드시 4개여야 합니다.")
 
-        if not 1 <= self.answer <= 4:
+        if not 1 <= self.answer <= 4: # self.answer가 1이상 4이하가 아닐 경우 실행
             raise ValueError("정답은 1~4 사이의 숫자여야 합니다.")
 
     def display(self, number):
         """문제와 선택지를 가독성있게 출력한다."""
 
         print("-" * 40)
-        print(f"[문제 {number}]") #f-string인거같은데 이 문장 구조 이해가 안감
+        print(f"[문제 {number}]") 
         print(self.question)
         print()
 
-        for index, choice in enumerate(self.choices, start=1): # 번호 붙이기
-            print(f"{index}. {choice}")
+        for index, choice in enumerate(self.choices, start=1): # enumerate 자료형 타입을 사용하여 인덱싱
+            print(f"{index}. {choice}") # index 1부터 시작
 
     def is_correct(self, user_answer): 
         """사용자의 답이 실제 정답과 같은지 확인한다."""
 
-        return self.answer == user_answer # 퀴즈에 저장된 실제 대답과 사용자가 입력한 대답 비교 (근데 return : 함수가 계산한 결과를 함수를 호출한 곳으로 돌려준다가 뭔지 모르겠음)
+        return self.answer == user_answer # 사용자 입력값 user_answer와 self.answer 값이 같으면 반환
 
-    def to_dict(self): # 퀴즈안에 저장된 데이터 딕셔너리로 바꾼다
+    def to_dict(self):
         """Quiz 객체를 JSON에 저장 가능한 dict로 바꾼다."""
 
         return {
-            "question": self.question, # "question" : "다음 중 디져트가 아닌것은?"" 
+            "question": self.question,
             "choices": self.choices,
             "answer": self.answer,
         } 
 
-    @classmethod # 패스
+    @classmethod
     def from_dict(cls, data):
         """dict 데이터를 Quiz 객체로 바꾼다."""
 
@@ -60,10 +60,10 @@ class QuizGame:
     """게임 전체를 관리하는 클래스"""
 
     def __init__(self):
-        # main.py가 있는 폴더 안에서 state.json을 찾는다.
-        self.state_file = Path(__file__).resolve().parent / "state.json" # 패스
+        
+        self.state_file = Path(__file__).resolve().parent / "state.json" # state.json 경로 찾기
 
-        self.quizzes = [] # 빈 퀴즈 목록. 여러개의 퀴즈 보관하는 상자
+        self.quizzes = [] # 퀴즈를 list 형태로 보관
 
         self.best_score = 0 # 최고 점수 저장
         self.best_correct = 0 # 최고 기록에서 맞힌 문제 수
@@ -72,7 +72,7 @@ class QuizGame:
         self.load_state() # state.json 파일을 읽어 이전 데이터를 불러온다. 저장된 파일이 있으면 그 기록을 덮어쓴다.
 
     def create_default_quizzes(self):
-        """파일이 없거나 손상됐을 때 사용할 기본 퀴즈""" # state.json 파일이 없거나 손상됐을 때 기본으로 사용할 퀴즈를 만든다.
+        """파일이 없거나 손상됐을 때 사용할 기본 퀴즈""" # state.json 파일이 없거나 손상됐을 때 기본으로 사용할 퀴즈 생성
 
         return [
             Quiz(
@@ -114,11 +114,11 @@ class QuizGame:
     def load_state(self):
         """state.json에서 데이터를 불러온다."""
 
-        try:
-            with open(self.state_file, "r", encoding="utf-8") as file:
-                data = json.load(file)
+        try: # 예외처리
+            with open(self.state_file, "r", encoding="utf-8") as file: # open(state.json, 읽기, 인코딩)을 file 변수에 할당
+                data = json.load(file) # json 형식으로 불러온 파일 data 변수에 할당
 
-            if not isinstance(data, dict):
+            if not isinstance(data, dict): # state.json != dict형 > false
                 raise ValueError("저장 데이터 형식이 잘못되었습니다.")
 
             quiz_data_list = data.get("quizzes")
@@ -438,6 +438,6 @@ class QuizGame:
             self.save_state()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # python이 관리하는 name이 __main__ 모듈과 같은 경우 (직접실행시 아래 코드 실행)
     game = QuizGame()
     game.run()
