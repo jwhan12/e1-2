@@ -105,53 +105,53 @@ class QuizGame:
         """state.json에서 데이터를 불러온다."""
 
         try: # 예외처리
-            with open(self.state_file, "r", encoding="utf-8") as file: # 파일 open(state.json, 읽기, 인코딩)을 file 변수에 할당
-                data = json.load() # load() : json 파일을 파이썬 문법에 맞게 바꾸는 함수 > data 변수에 할당
+            with open(self.state_file, "r", encoding="utf-8") as file: # state.json을 읽어 file 변수에 할당
+                data = json.load(file) # load() : json 형태 파일을 파이썬 문법에 맞게 바꾸는 함수 >> data 변수에 할당
 
             if not isinstance(data, dict): # state.json != dict형 > false, data 변수의 type은 dict
                 raise ValueError("저장 데이터 형식이 잘못되었습니다.")
 
-            quiz_data_list = data.get("quizzes") # data dict에서의 get 함수
+            quiz_data_list = data.get("quizzes") # data 형태 : dict, dict class에서의 get 메서드 사용하여 quizzes라는 key의 value값을 quiz_data_list에 할당
 
-            if not isinstance(quiz_data_list, list):
+            if not isinstance(quiz_data_list, list): # quiz_data_list != list형 >> false
                 raise ValueError("퀴즈 데이터가 목록이 아닙니다.")
 
             loaded_quizzes = []
 
             for quiz_data in quiz_data_list:
-                if not isinstance(quiz_data, dict):
+                if not isinstance(quiz_data, dict): # quiz_data != dict형 >> false
                     raise ValueError("퀴즈 데이터 형식이 잘못되었습니다.")
 
-                quiz = Quiz(
-                    question=quiz_data["question"],
-                    choices=quiz_data["choices"],
-                    answer=quiz_data["answer"],
+                quiz = Quiz( # 딕셔너리 하나하나 quiz 객체 생성
+                    question=quiz_data["question"], # 다음 중 커피가 들어간 음료가 아닌것은?
+                    choices=quiz_data["choices"], # 아메리카노...
+                    answer=quiz_data["answer"], # 2
                 )
                 loaded_quizzes.append(quiz)
 
-            best_score = data.get("best_score", 0)
+            best_score = data.get("best_score", 0) # best_score가 key값이 없을 경우 기본값 0, 반대로 key값이 존재할 경우 value값을 best_score에 할당
             best_correct = data.get("best_correct", 0)
             best_total = data.get("best_total", 0)
 
-            score_values = (
+            score_values = ( # 데이터가 함부로 바뀌면 안될때 튜플사용, immutable
                 best_score,
                 best_correct,
                 best_total,
             )
 
-            if not all(isinstance(value, int) for value in score_values):
+            if not all(isinstance(value, int) for value in score_values): # score_value를 value에 하나씩 넣고, 형태가 int인지 확인. 맞으면 True 반환, 모두 True면 True, 하나라도 False면 False
                 raise ValueError("점수 데이터는 정수여야 합니다.")
 
-            if not 0 <= best_score <= 100:
+            if not 0 <= best_score <= 100: # 최고 점수가 0 이상 100 이하가 아닌 경우
                 raise ValueError("최고 점수가 올바르지 않습니다.")
 
-            if best_correct < 0:
+            if best_correct < 0: # 최고 기록에서 맞힌 문제 수가 0 미만인 경우
                 raise ValueError("정답 개수가 올바르지 않습니다.")
 
-            if best_total < 0:
+            if best_total < 0: # 최고 기록 당시 전체 문제 수가 0 미만인 경우
                 raise ValueError("문제 개수가 올바르지 않습니다.")
 
-            if best_correct > best_total:
+            if best_correct > best_total: # 최고 기록에서 맞힌 문제 수 > 최고 기록 당시 전체 문제 수
                 raise ValueError("점수 상세 정보가 올바르지 않습니다.")
 
             self.quizzes = loaded_quizzes
