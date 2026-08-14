@@ -49,39 +49,9 @@
                 "카라멜 마끼아또"
             ],
             "answer": 3
-        },
-        {
-            "question": "다음 중 빵 종류가 아닌것은?",
-            "choices": [
-                "소금빵",
-                "모카번",
-                "식빵",
-                "김치볶음밥"
-            ],
-            "answer": 4
-        },
-        {
-            "question": "다음 우유 들어간 음료가 아닌 것은?",
-            "choices": [
-                "딸기라떼",
-                "말차라떼",
-                "초코라떼",
-                "아메리카노"
-            ],
-            "answer": 4
-        },
-        {
-            "question": "다음 중 마카롱 종류가 아닌것은?",
-            "choices": [
-                "초코마카롱",
-                "아이맥",
-                "크마카롱",
-                "인절미마카롱"
-            ],
-            "answer": 2
         }
     ],
-    "best_score": 80,
-    "best_correct": 4,
-    "best_total": 5
+    "best_score": 0,
+    "best_correct": 0,
+    "best_total": 0
 }
