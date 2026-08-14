@@ -121,7 +121,7 @@ class QuizGame:
             if not isinstance(data, dict): # state.json != dict형 > false, data 변수의 type은 dict
                 raise ValueError("저장 데이터 형식이 잘못되었습니다.")
 
-            quiz_data_list = data.get("quizzes") 
+            quiz_data_list = data.get("quizzes") # data dict에서의 get 함수
 
             if not isinstance(quiz_data_list, list):
                 raise ValueError("퀴즈 데이터가 목록이 아닙니다.")
