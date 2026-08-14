@@ -51,9 +51,9 @@ class QuizGame:
 
     def __init__(self):
         
-        self.state_file = Path(__file__).resolve().parent / "state.json" # state.json 파일의 경로 찾기
+        self.state_file = Path(__file__).resolve().parent / "state.json" # state.json 경로 찾기
 
-        self.quizzes = [] # 퀴즈 목록을 저장할 리스트
+        self.quizzes = [] # 퀴즈를 list 형태로 보관
 
         self.best_score = 0 # 최고 점수 저장
         self.best_correct = 0 # 최고 기록에서 맞힌 문제 수
@@ -95,7 +95,7 @@ class QuizGame:
     def reset_to_default(self):
         """퀴즈와 점수를 기본 상태로 초기화한다."""
 
-        self.quizzes = self.create_default_quizzes() # 기본 퀴즈를 self.quizzes에 할당
+        self.quizzes = self.create_default_quizzes()
 
         self.best_score = 0
         self.best_correct = 0
@@ -105,13 +105,13 @@ class QuizGame:
         """state.json에서 데이터를 불러온다."""
 
         try: # 예외처리
-            with open(self.state_file, "r", encoding="utf-8") as file: # 파일 open(state.json, 읽기, 인코딩)을 file 변수에 할당
-                data = json.load() # load() : json 파일을 파이썬 문법에 맞게 바꾸는 함수 > data 변수에 할당
+            with open(self.state_file, "r", encoding="utf-8") as file: # open(state.json, 읽기, 인코딩)을 file 변수에 할당
+                data = json.load(file) # json 형식으로 불러온 파일 data 변수에 할당
 
-            if not isinstance(data, dict): # state.json != dict형 > false, data 변수의 type은 dict
+            if not isinstance(data, dict): # state.json != dict형 > false
                 raise ValueError("저장 데이터 형식이 잘못되었습니다.")
 
-            quiz_data_list = data.get("quizzes") # data dict에서의 get 함수
+            quiz_data_list = data.get("quizzes")
 
             if not isinstance(quiz_data_list, list):
                 raise ValueError("퀴즈 데이터가 목록이 아닙니다.")
