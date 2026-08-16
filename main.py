@@ -5,7 +5,7 @@ from pathlib import Path # pathlib package & Path class or sub package
 class Quiz:
     """퀴즈 한 문제를 담당하는 클래스"""
 
-    def __init__(self, question, choices, answer): # Quiz class에서 가장 먼저 실행 / question, choices, answer 데이터
+    def __init__(self, question, choices, answer): # Quiz class에서 가장 먼저 실행, Quiz객체 생성
         self.question = question # question 데이터를 self.question에 할당
         self.choices = choices
         self.answer = answer
@@ -106,7 +106,7 @@ class QuizGame:
 
         try: # 예외처리
             with open(self.state_file, "r", encoding="utf-8") as file: # state.json을 읽어 file 변수에 할당
-                data = json.load(file) # load() : json 형태 파일을 파이썬 문법에 맞게 바꾸는 함수 >> data 변수에 할당
+                data = json.load(file) # load() : json 형태 파일을 파이썬 문법(dict)에 맞게 바꾸는 함수 >> data 변수에 할당
 
             if not isinstance(data, dict): # state.json != dict형 > false, data 변수의 type은 dict
                 raise ValueError("저장 데이터 형식이 잘못되었습니다.")
@@ -123,9 +123,9 @@ class QuizGame:
                     raise ValueError("퀴즈 데이터 형식이 잘못되었습니다.")
 
                 quiz = Quiz( # 딕셔너리 하나하나 quiz 객체 생성
-                    question=quiz_data["question"], # 다음 중 커피가 들어간 음료가 아닌것은?
-                    choices=quiz_data["choices"], # 아메리카노...
-                    answer=quiz_data["answer"], # 2
+                    question=quiz_data["question"], # "question" value값이 Quiz class question에 할당
+                    choices=quiz_data["choices"], 
+                    answer=quiz_data["answer"],
                 )
                 loaded_quizzes.append(quiz)
 
