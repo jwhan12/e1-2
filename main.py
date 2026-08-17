@@ -433,5 +433,5 @@ class QuizGame:
 
 
 if __name__ == "__main__": # python이 관리하는 name이 __main__ 모듈과 같은 경우 (직접실행시 아래 코드 실행)
-    game = QuizGame()
+    game = QuizGame() # QuizGame Class 실행하여 game 객체 생성
     game.run()
