@@ -132,11 +132,11 @@ class QuizGame:
             best_correct = data.get("best_correct", 0)
             best_total = data.get("best_total", 0)
 
-            score_values = ( # 데이터가 함부로 바뀌면 안될때 튜플사용, immutable
+            score_values = [
                 best_score,
                 best_correct,
                 best_total,
-            )
+            ]
 
             if not all(isinstance(value, int) for value in score_values): # score_value를 value에 하나씩 넣고, 형태가 int인지 확인. 맞으면 True 반환, 모두 True면 True, 하나라도 False면 False
                 raise ValueError("점수 데이터는 정수여야 합니다.")
