@@ -1,5 +1,4 @@
 import json # package
-from pathlib import Path # pathlib package & Path class or sub package
 
 
 class Quiz:
@@ -51,7 +50,7 @@ class QuizGame:
 
     def __init__(self):
         
-        self.state_file = Path(__file__).resolve().parent / "state.json" # state.json 파일의 경로 찾기
+        self.state_file = "./state.json" # state.json 파일의 경로 찾기
 
         self.quizzes = [] # 퀴즈 목록을 저장할 리스트
 
