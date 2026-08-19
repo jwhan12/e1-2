@@ -211,18 +211,18 @@ class QuizGame:
             print("⚠️ 데이터를 파일에 저장하지 못했습니다.")
             return False
 
-    def get_integer(self, prompt, minimum, maximum):
+    def get_integer(self, prompt, minimum, maximum): # "선택: ", 1, 5
         """범위 안의 숫자를 입력할 때까지 반복한다."""
 
         while True:
-            raw_value = input(prompt).strip()
+            raw_value = input(prompt).strip() # 사용자가 입력한 값 반환, str class의 strip 메서드 실행하여 공백제거
 
             if raw_value == "":
                 print("⚠️ 아무것도 입력하지 않았습니다.")
                 continue
 
             try:
-                value = int(raw_value)
+                value = int(raw_value) # int로 변환 후 value에 할당
 
             except ValueError:
                 print("⚠️ 숫자를 입력해 주세요.")
@@ -421,14 +421,14 @@ class QuizGame:
                     print("👋 프로그램을 종료합니다.")
                     break
 
-        except (KeyboardInterrupt, EOFError): # End Of File >> 더이상 입력받을 데이터 없음
+        except (KeyboardInterrupt, EOFError): # ctrl+c / End Of File (ctrl+d) >> 더이상 입력받을 데이터 없음
             print()
             print(
                 "⚠️ 입력이 중단되었습니다. "
                 "데이터를 저장하고 종료합니다."
             )
 
-            self.save_state() # 데이터 저장한 뒤 종료
+            self.save_state() # 데이터 저장 후 종료
 
 
 if __name__ == "__main__": # python이 관리하는 name이 __main__ 모듈과 같은 경우 (직접실행시 아래 코드 실행)
