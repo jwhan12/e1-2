@@ -421,14 +421,14 @@ class QuizGame:
                     print("👋 프로그램을 종료합니다.")
                     break
 
-        except (KeyboardInterrupt, EOFError):
+        except (KeyboardInterrupt, EOFError): # End Of File >> 더이상 입력받을 데이터 없음
             print()
             print(
                 "⚠️ 입력이 중단되었습니다. "
                 "데이터를 저장하고 종료합니다."
             )
 
-            self.save_state()
+            self.save_state() # 데이터 저장한 뒤 종료
 
 
 if __name__ == "__main__": # python이 관리하는 name이 __main__ 모듈과 같은 경우 (직접실행시 아래 코드 실행)
